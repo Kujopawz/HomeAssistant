@@ -39,17 +39,22 @@ RUN \
     python3-pip \
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
-    pip3 install requests
+    pip3 install requests \
+    pip3 install gpiozero \
+    pip3 install adafruit-blinka \
+    pip3 install adafruit-circuitpython-ssd1306 \
+    pip3 install pillow \
+    pip3 install websocket-client 
 
 
 # Install Pythong Libs for this Add-on
 
-RUN /usr/src/pip3 install requests 
-RUN pip3 install gpiozero 
-RUN pip3 install adafruit-blinka 
-RUN pip3 install adafruit-circuitpython-ssd1306 
-RUN pip3 install pillow 
-RUN pip3 install websocket-client 
+#RUN pip3 install requests 
+#RUN pip3 install gpiozero 
+#RUN pip3 install adafruit-blinka 
+#RUN pip3 install adafruit-circuitpython-ssd1306 
+#RUN pip3 install pillow 
+#RUN pip3 install websocket-client 
 
 COPY /python* /UCTronics_OLED/
 
