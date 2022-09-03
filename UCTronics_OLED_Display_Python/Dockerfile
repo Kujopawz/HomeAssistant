@@ -25,7 +25,7 @@ WORKDIR /usr/src
 
 RUN \
     set -x \
-    akp add --no-cache gcc\
+    apk add gcc\
     procps\
     bash \
     jq \
