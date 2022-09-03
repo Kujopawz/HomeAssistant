@@ -24,7 +24,8 @@ ARG \
 WORKDIR /usr/src
 
 RUN \
-    set -x \
+    set -x
+RUN \
     && apt-get update && apt-get install -y \
     gcc \
     procps\
