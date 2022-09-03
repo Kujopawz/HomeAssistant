@@ -23,8 +23,28 @@ ARG \
 # Base system
 WORKDIR /usr/src
 
+RUN \
+    set -x \
+    akp add gcc\
+    apk add procps\
+    apk add bash \
+    apk add jq \
+    apk add tzdata \
+    apk add curl \
+    apk add nano \
+    apk add ca-certificates \
+    apk add python3 \
+    apk add python3-dev \
+
 
 # Install Pythong Libs for this Add-on
+
+RUN pip3 install requests
+RUN pip3 install gpiozero
+RUN pip3 install adafruit-blinka
+RUN pip3 install adafruit-circuitpython-ssd1306
+RUN pip3 install pillow
+RUN pip3 install websocket-client
 
 COPY /python* /UCTronics_OLED/
 
