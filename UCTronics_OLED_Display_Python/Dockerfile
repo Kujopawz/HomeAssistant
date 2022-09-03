@@ -51,6 +51,7 @@ RUN \
     libjpeg-turbo-dev \
     openjpeg \
     tar \
+    gzip \
     \
     && curl -L -f -s "https://github.com/just-containers/s6-overlay/releases/download/v3.1.2.1/s6-overlay-armhf.tar.gz" \
     | tar zxvf - -C / \
