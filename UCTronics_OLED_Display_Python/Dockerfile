@@ -10,6 +10,13 @@ ENV \
     CURL_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt" \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_CMD_WAIT_FOR_SERVICES=1
+    
+ENV PATH /usr/local/bin:$PATH
+
+RUN apk add --no-cache
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
