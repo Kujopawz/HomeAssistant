@@ -24,7 +24,8 @@ ARG \
 WORKDIR /usr/src
 
 RUN \
-    set -x \
+    apk add --no-cache \
+    python3 \
     apk add --no-cache \
     gcc\
     procps\
@@ -56,7 +57,7 @@ RUN pip3 install adafruit-blinka
 RUN pip3 install adafruit-circuitpython-ssd1306 
 RUN pip3 install pillow 
 RUN pip3 install websocket-client 
-
+WORKDIR /data
 COPY /python* /UCTronics_OLED/
 
 # S6-Overlay
