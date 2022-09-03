@@ -34,8 +34,8 @@ RUN \
     apk add nano \
     apk add ca-certificates \
     apk add python3 \
-    apk add python3-pip \
-    apk add python3-dev
+    apk add python3-dev \
+    apk add python3-pip
 
 
 # Install Pythong Libs for this Add-on
