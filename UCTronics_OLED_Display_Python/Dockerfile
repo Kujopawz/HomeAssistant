@@ -48,6 +48,7 @@ RUN \
     jpeg-dev \
     libjpeg \
     libjpeg-turbo-dev \
+    openjpeg \
     
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
