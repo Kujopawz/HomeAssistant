@@ -3,6 +3,10 @@ ARG BUILD_FROM
 
 FROM ${BUILD_FROM}
 
+RUN \
+    apk add --no-cache \
+    python3
+
 # Default ENV
 ENV \
     LANG="C.UTF-8" \
@@ -15,10 +19,10 @@ ENV \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Version
-ARG \
-    BASHIO_VERSION \
-    TEMPIO_VERSION \
-    S6_OVERLAY_VERSION
+#ARG \
+#    BASHIO_VERSION \
+#    TEMPIO_VERSION \
+#    S6_OVERLAY_VERSION
 
 # Base system
 WORKDIR /usr/src
@@ -26,7 +30,6 @@ WORKDIR /usr/src
 RUN \
     apk add --no-cache \
     python3 \
-    apk add --no-cache \
     gcc\
     procps\
     bash \
@@ -35,10 +38,10 @@ RUN \
     curl \
     nano \
     ca-certificates \
-    apk add --no-cache python3 \
-    apk add --no-cache python3-dev \
-    apk add --no-cache py3-pip \
-    apk add --no-cache python3-pip \
+    python3 \
+    python3-dev \
+    py3-pip \
+    python3-pip \
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
     pip3 install requests \
