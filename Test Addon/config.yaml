@@ -8,5 +8,4 @@ arch:
   - amd64
   - armhf
   - armv7
-  - armv6
   - i386
