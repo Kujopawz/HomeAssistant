@@ -30,6 +30,7 @@ WORKDIR /usr/src
 RUN \
     apk add --no-cache \
     gcc\
+    musl-dev \
     procps\
     bash \
     jq \
@@ -51,13 +52,7 @@ RUN \
     openjpeg \
     
     && mkdir -p /etc/fix-attrs.d \
-    && mkdir -p /etc/services.d \
-    pip3 install requests \
-    pip3 install gpiozero \
-    pip3 install adafruit-blinka \
-    pip3 install adafruit-circuitpython-ssd1306 \
-    pip3 install pillow \
-    pip3 install websocket-client 
+    && mkdir -p /etc/services.d
 
 
 # Install Pythong Libs for this Add-on
@@ -68,7 +63,7 @@ RUN pip3 install adafruit-blinka
 RUN pip3 install adafruit-circuitpython-ssd1306 
 RUN pip3 install pillow 
 RUN pip3 install websocket-client 
-WORKDIR /data
+
 COPY /python* /UCTronics_OLED/
 
 # S6-Overlay
