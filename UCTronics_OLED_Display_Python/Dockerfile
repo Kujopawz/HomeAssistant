@@ -40,6 +40,15 @@ RUN \
     python3 \
     python3-dev \
     py3-pip \
+    freetype \
+    libpng \
+    libjpeg-turbo \
+    freetype-dev \
+    libpng-dev \
+    jpeg-dev \
+    libjpeg \
+    libjpeg-turbo-dev \
+    
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
     pip3 install requests \
