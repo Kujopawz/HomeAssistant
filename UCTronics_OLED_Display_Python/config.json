@@ -20,6 +20,7 @@
         "SYS_ADMIN"
     ],
     "devices": [
+        "/dev/i2c-0",
         "/dev/i2c-1"
     ],
     "gpio": true,
