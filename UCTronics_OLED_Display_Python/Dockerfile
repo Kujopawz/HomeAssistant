@@ -25,7 +25,8 @@ WORKDIR /usr/src
 
 RUN \
     set -x \
-    apk add gcc\
+    apk add --no-cache \
+    gcc\
     procps\
     bash \
     jq \
@@ -33,10 +34,10 @@ RUN \
     curl \
     nano \
     ca-certificates \
-    python3 \
-    python3-dev \
-    py3-pip \
-    python3-pip \
+    apk add --no-cache python3 \
+    apk add --no-cache python3-dev \
+    apk add --no-cache py3-pip \
+    apk add --no-cache python3-pip \
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
     pip3 install requests \
@@ -49,12 +50,12 @@ RUN \
 
 # Install Pythong Libs for this Add-on
 
-#RUN pip3 install requests 
-#RUN pip3 install gpiozero 
-#RUN pip3 install adafruit-blinka 
-#RUN pip3 install adafruit-circuitpython-ssd1306 
-#RUN pip3 install pillow 
-#RUN pip3 install websocket-client 
+RUN pip3 install requests 
+RUN pip3 install gpiozero 
+RUN pip3 install adafruit-blinka 
+RUN pip3 install adafruit-circuitpython-ssd1306 
+RUN pip3 install pillow 
+RUN pip3 install websocket-client 
 
 COPY /python* /UCTronics_OLED/
 
