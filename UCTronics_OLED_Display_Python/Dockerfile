@@ -26,16 +26,16 @@ WORKDIR /usr/src
 RUN \
     set -x \
     akp add gcc\
-    apk add procps\
-    apk add bash \
-    apk add jq \
-    apk add tzdata \
-    apk add curl \
-    apk add nano \
-    apk add ca-certificates \
-    apk add python3 \
-    apk add python3-dev \
-    apk add py3-pip
+    procps\
+    bash \
+    jq \
+    tzdata \
+    curl \
+    nano \
+    ca-certificates \
+    python3 \
+    python3-dev \
+    py3-pip
 
 
 # Install Pythong Libs for this Add-on
