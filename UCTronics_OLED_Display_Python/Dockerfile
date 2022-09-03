@@ -38,13 +38,14 @@ RUN \
     py3-pip \
     python3-pip \
     && mkdir -p /etc/fix-attrs.d \
-    && mkdir -p /etc/services.d
+    && mkdir -p /etc/services.d \
+    pip3 install requests
 
 
 # Install Pythong Libs for this Add-on
 
-RUN python3 -m pip install requests 
-RUN python3 -m pip install gpiozero 
+RUN pip3 install requests 
+RUN pip3 install gpiozero 
 RUN pip3 install adafruit-blinka 
 RUN pip3 install adafruit-circuitpython-ssd1306 
 RUN pip3 install pillow 
