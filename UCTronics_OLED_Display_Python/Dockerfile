@@ -29,7 +29,6 @@ WORKDIR /usr/src
 
 RUN \
     apk add --no-cache \
-    python3 \
     gcc\
     procps\
     bash \
@@ -41,7 +40,6 @@ RUN \
     python3 \
     python3-dev \
     py3-pip \
-    python3-pip \
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
     pip3 install requests \
