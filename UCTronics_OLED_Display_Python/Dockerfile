@@ -10,13 +10,6 @@ ENV \
     CURL_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt" \
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6_CMD_WAIT_FOR_SERVICES=1
-    
-ENV PATH /usr/local/bin:$PATH
-
-RUN apk add --no-cache
-
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -32,7 +25,7 @@ WORKDIR /usr/src
 
 RUN \
     set -x \
-    akp add gcc\
+    akp add --no-cache gcc\
     procps\
     bash \
     jq \
@@ -48,9 +41,9 @@ RUN \
 
 
 # Install Pythong Libs for this Add-on
-RUN python3 --version
-RUN py3 -m pip install requests 
-RUN py3 -m pip install gpiozero 
+
+RUN pip3 install requests 
+RUN pip3 install gpiozero 
 RUN pip3 install adafruit-blinka 
 RUN pip3 install adafruit-circuitpython-ssd1306 
 RUN pip3 install pillow 
