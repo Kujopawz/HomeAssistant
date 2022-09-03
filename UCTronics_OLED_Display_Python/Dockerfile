@@ -52,17 +52,17 @@ RUN \
     openjpeg \
     tar \
     \
-    && curl -L -f -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-armhf.tar.gz" \
+    && curl -L -f -s "https://github.com/just-containers/s6-overlay/releases/download/v3.1.2.1/s6-overlay-armhf.tar.gz" \
     | tar zxvf - -C / \
     && mkdir -p /etc/fix-attrs.d \
     && mkdir -p /etc/services.d \
     \
     && curl -L -f -s -o /usr/bin/tempio \
-    "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_armhf" \
+    "https://github.com/home-assistant/tempio/releases/download/2021.09.0/tempio_armhf" \
     && chmod a+x /usr/bin/tempio \
     \
     && mkdir -p /usr/src/bashio \
-    && curl -L -f -s "https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz" \
+    && curl -L -f -s "https://github.com/hassio-addons/bashio/archive/refs/tags/v0.14.3.tar.gz" \
     | tar -xzf - --strip 1 -C /usr/src/bashio \
     && mv /usr/src/bashio/lib /usr/lib/bashio \
     && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
