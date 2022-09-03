@@ -19,10 +19,10 @@ ENV \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Version
-#ARG \
-#    BASHIO_VERSION \
-#    TEMPIO_VERSION \
-#    S6_OVERLAY_VERSION
+ARG \
+    BASHIO_VERSION \
+    TEMPIO_VERSION \
+    S6_OVERLAY_VERSION
 
 # Base system
 WORKDIR /usr/src
@@ -50,9 +50,24 @@ RUN \
     libjpeg \
     libjpeg-turbo-dev \
     openjpeg \
-    
+    \
+    && curl -L -f -s "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-armhf.tar.gz" \
+    | tar zxvf - -C / \
     && mkdir -p /etc/fix-attrs.d \
-    && mkdir -p /etc/services.d
+    && mkdir -p /etc/services.d \
+    \
+    && curl -L -f -s -o /usr/bin/tempio \
+    "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_armhf" \
+    && chmod a+x /usr/bin/tempio \
+    \
+    && mkdir -p /usr/src/bashio \
+    && curl -L -f -s "https://github.com/hassio-addons/bashio/archive/v${BASHIO_VERSION}.tar.gz" \
+    | tar -xzf - --strip 1 -C /usr/src/bashio \
+    && mv /usr/src/bashio/lib /usr/lib/bashio \
+    && ln -s /usr/lib/bashio/bashio /usr/bin/bashio \
+    \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /usr/src/*
 
 
 # Install Pythong Libs for this Add-on
