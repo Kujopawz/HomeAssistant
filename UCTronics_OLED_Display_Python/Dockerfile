@@ -38,7 +38,7 @@ RUN \
 
 
 # Install Pythong Libs for this Add-on
-SHELL ["/bin/bash"]
+
 RUN pip3 install requests 
 RUN pip3 install gpiozero 
 RUN pip3 install adafruit-blinka 
