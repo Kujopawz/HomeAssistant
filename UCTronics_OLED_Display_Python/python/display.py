@@ -36,7 +36,7 @@ i2c = busio.I2C(SCL, SDA)
 
 # Create the SSD1306 OLED class.
 # The first two parameters are the pixel width and pixel height.  Change these to the right size for your display!
-disp = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c)
+disp = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
 
 # Clear display.
 disp.fill(0)
@@ -57,8 +57,8 @@ draw = ImageDraw.Draw(image)
 # Load default font.
 # font = ImageFont.load_default()
 p = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 9)
-p_bold = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 12)
-small = ImageFont.truetype("usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 12)
+p_bold = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 9)
+small = ImageFont.truetype("usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 8)
 smaller = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 7)
 
 
@@ -83,15 +83,15 @@ def show_storage():
     storage = storage.split(',')
 
     # Clear Canvas
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
-    
-    # Resize and merge icon to Canvas
-    icon = img_disk.resize([32,32])  
-    image.paste(icon,(0,0))
+    draw.rectangle((0,0,128,32), outline=0, fill=0)
 
-    draw.text((36, 8), "USED: " + storage[0] + ' GB \n', font=small, fill=255)
-    draw.text((6, 36), "TOTAL: " + storage[1] + ' GB \n', font=small, fill=255)
-    draw.text((6, 52), "UTILISED: " + storage[2] + ' \n', font=small, fill=255) 
+    # Resize and merge icon to Canvas
+    icon = img_disk.resize([26,26])  
+    image.paste(icon,(-2,3))
+
+    draw.text((29, 0), "USED: " + storage[0] + ' GB \n', font=small, fill=255)
+    draw.text((29, 11), "TOTAL: " + storage[1] + ' GB \n', font=small, fill=255)
+    draw.text((29, 21), "UTILISED: " + storage[2] + ' \n', font=small, fill=255) 
 
     #image.save(r"./img/examples/storage.png")    
 
@@ -105,15 +105,15 @@ def show_memory():
     mem = mem.split(',')
 
     # Clear Canvas
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
+    draw.rectangle((0,0,128,32), outline=0, fill=0)
 
     # Resize and merge icon to Canvas
-    icon = img_mem.resize([32,32])  
-    image.paste(icon,(0,0))
+    icon = img_mem.resize([26,26])  
+    image.paste(icon,(-2,3))
 
-    draw.text((36, 8), "USED: " + mem[0] + ' GB \n', font=small, fill=255)
-    draw.text((6, 36), "TOTAL: " + mem[1] + ' GB \n', font=small, fill=255)
-    draw.text((6, 52), "UTILISED: " + mem[2] + ' \n', font=small, fill=255)  
+    draw.text((29, 0), "USED: " + mem[0] + ' GB \n', font=small, fill=255)
+    draw.text((29, 11), "TOTAL: " + mem[1] + ' GB \n', font=small, fill=255)
+    draw.text((29, 21), "UTILISED: " + mem[2] + ' \n', font=small, fill=255)  
 
     #image.save(r"./img/examples/memory.png")   
 
@@ -138,15 +138,15 @@ def show_cpu_temp():
 
 
     # Clear Canvas
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
+    draw.rectangle((0,0,128,32), outline=0, fill=0)
 
     # Resize and merge icon to Canvas
-    icon = img_cpu_64.resize([32,32])  
-    image.paste(icon,(0,0))
+    icon = img_cpu_64.resize([26,26])  
+    image.paste(icon,(-2,3))
 
-    draw.text((36, 8), 'TEMP: ' + temp, font=small, fill=255)
-    draw.text((6, 36), 'LOAD: '+ cpu + "% ", font=small, fill=255)  
-    draw.text((6, 52), uptime.upper(), font=small, fill=255)
+    draw.text((29, 0), 'TEMP: ' + temp, font=small, fill=255)
+    draw.text((29, 11), 'LOAD: '+ cpu + "% ", font=small, fill=255)  
+    draw.text((29, 21), uptime.upper(), font=small, fill=255)
 
     #image.save(r"./img/examples/cpu.png")
     
@@ -165,15 +165,15 @@ def show_network():
     mac = shell_cmd("cat /sys/class/net/eth0/address")
 
     # Clear Canvas
-    draw.rectangle((0, 0, width, height), outline=0, fill=0)
+    draw.rectangle((0,0,128,32), outline=0, fill=0)
 
     # Resize and merge icon to Canvas
-    icon = img_network.resize([32,32])  
-    image.paste(icon,(0,0))
+    icon = img_network.resize([26,26])  
+    image.paste(icon,(-2,3))
 
-    draw.text((34, 8), "HOST " + hostname, font=small, fill=255)
-    draw.text((6, 36), "IP4 " + ipv4, font=small, fill=255)    
-    draw.text((6, 52), "MAC " + mac.upper(), font=small, fill=255)    
+    draw.text((29, 0), "HOST " + hostname, font=small, fill=255)
+    draw.text((29, 11), "IP4 " + ipv4, font=small, fill=255)    
+    draw.text((29, 21), "MAC " + mac.upper(), font=small, fill=255)    
 
     #image.save(r"./img/examples/network.png")
 
@@ -206,22 +206,22 @@ def show_splash():
     draw.rectangle((0, 0, width, height), outline=0, fill=0)
 
     # Get HA Logo and Resize
-    logo = img_ha_logo.resize([32,32])
+    logo = img_ha_logo.resize([26,26])
     logo = ImageOps.invert(logo)  
     
     # Merge HA Logo with Canvas.
-    image.paste(logo,(47,0))
+    image.paste(logo,(-2,3))
 
-    draw.line([(5,48),(123,48)], fill=255, width=1)
+    draw.line([(34, 16),(123,16)], fill=255, width=1)
 
     ln1 = "Home Assistant"
-    ln1_x = get_text_center(ln1, p_bold, 64)
-    draw.text((ln1_x, 34), ln1, font=p_bold, fill=255)
+    ln1_x = get_text_center(ln1, p_bold, 78)
+    draw.text((ln1_x, 4), ln1, font=p_bold, fill=255)
 
     # Write Test, Eventually will get from HA API.
     ln2 = 'OS '+ os_version + ' - ' + core_version
-    ln2_x = get_text_center(ln2, small, 64)
-    draw.text((ln2_x, 52), ln2, font=small, fill=255)
+    ln2_x = get_text_center(ln2, small, 78)
+    draw.text((ln2_x, 20), ln2, font=small, fill=255)
 
 
     # Display Image to OLED
@@ -259,4 +259,3 @@ def clear_display():
 if __name__ == "__main__":
     get_options()
     start()
-
