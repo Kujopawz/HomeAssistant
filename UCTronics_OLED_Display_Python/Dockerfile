@@ -12,7 +12,6 @@ ENV \
     S6_CMD_WAIT_FOR_SERVICES=1
 
 # Set shell
-SHELL ["/bin/bash"]
 
 # Version
 ARG \
