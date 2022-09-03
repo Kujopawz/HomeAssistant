@@ -34,17 +34,18 @@ RUN \
     apk add nano \
     apk add ca-certificates \
     apk add python3 \
-    apk add python3-dev \
+    apk add python3-dev
 
 
 # Install Pythong Libs for this Add-on
 
-RUN pip3 install requests
-RUN pip3 install gpiozero
-RUN pip3 install adafruit-blinka
-RUN pip3 install adafruit-circuitpython-ssd1306
-RUN pip3 install pillow
-RUN pip3 install websocket-client
+RUN \
+    pip3 install requests \
+    pip3 install gpiozero \
+    pip3 install adafruit-blinka \
+    pip3 install adafruit-circuitpython-ssd1306 \
+    pip3 install pillow \
+    pip3 install websocket-client \
 
 COPY /python* /UCTronics_OLED/
 
