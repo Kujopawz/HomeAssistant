@@ -6,7 +6,6 @@
     "arch": [
         "armhf",
         "armv7",
-        "armv6",
         "aarch64"
     ],
     "log_level": "info",
