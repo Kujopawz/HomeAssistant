@@ -12,7 +12,7 @@ ENV \
     S6_CMD_WAIT_FOR_SERVICES=1
 
 # Set shell
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+SHELL ["/bin/bash"]
 
 # Version
 ARG \
@@ -39,13 +39,12 @@ RUN \
 
 # Install Pythong Libs for this Add-on
 
-RUN \
-    pip3 install requests \
-    pip3 install gpiozero \
-    pip3 install adafruit-blinka \
-    pip3 install adafruit-circuitpython-ssd1306 \
-    pip3 install pillow \
-    pip3 install websocket-client \
+RUN pip3 install requests 
+RUN pip3 install gpiozero 
+RUN pip3 install adafruit-blinka 
+RUN pip3 install adafruit-circuitpython-ssd1306 
+RUN pip3 install pillow 
+RUN pip3 install websocket-client 
 
 COPY /python* /UCTronics_OLED/
 
