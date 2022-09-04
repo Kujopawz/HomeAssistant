@@ -62,7 +62,7 @@ RUN pip3 install adafruit-blinka
 RUN pip3 install adafruit-circuitpython-ssd1306 
 RUN pip3 install pillow 
 RUN pip3 install websocket-client 
-RUN pip install RPi.GPIO
+RUN pip3 install RPi.GPIO
 
 COPY /python* /UCTronics_OLED/
 
